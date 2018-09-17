@@ -1,5 +1,7 @@
 package com.thg.bootdemo.controller.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -14,6 +16,8 @@ import com.thg.bootdemo.web.config.PrefixProperties;
 @RequestMapping(value="/demo")
 @PropertySource("classpath:me.properties")
 public class DemoController {
+	private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
+	
 	@Autowired
 	BootProperties ps;
 	@Autowired
@@ -40,7 +44,12 @@ public class DemoController {
 		res = res + "-----com.neo.description："+description;
 		res = res + "----me.key1:"+key1;
 		System.out.println(res);
-		System.out.println(ps.getConfigInfo());
+		logger.error("***1****"+res);
+//		System.out.println(ps.getConfigInfo());
+		logger.debug("===debug==="+ps.getConfigInfo());
+		logger.debug("{}", "===debug==="+ps.getConfigInfo());
+		logger.info("===info==="+ps.getConfigInfo());
+		logger.warn("===warn==="+ps.getConfigInfo());
 		System.out.println(prefixBean.getPrefixConfigInfo());
 		return res;
 	}

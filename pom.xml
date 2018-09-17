@@ -32,6 +32,8 @@
 	        <artifactId>spring-boot-starter-web</artifactId>
 	 	</dependency>
  
+
+ 
  		<!-- 修改代码自动重启实时生效 -->
  		<dependency>
 	        <groupId>org.springframework.boot</groupId>
