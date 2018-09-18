@@ -25,6 +25,7 @@
 	8.1 使用默认的基本日志配置（如果使用了 Starters ，那么默认使用 Logback），在application.properties中添加配置:
 	8.2 使用logback的高级日志配置：删除application.properties中的默认配置；增加logback.xml日志配置文件即可。
 	8.3 使用log4j的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j依赖；2、删除application.properties中关于日志的配置部分，并重命名logback.xml文件使之失效；3、增加log4j.properties文件（设置日志文件编码集为utf-8后文件日志竟然还是乱码，后来莫名其妙又好了，估计跟application.properties中的日志配置没删除有关系）
+	8.3 使用log4j2的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j2依赖；2、增加log4j2.xml文件（日志文件乱码莫名其妙，但用记事本和sublime打开却不是乱码）
 
 
 
