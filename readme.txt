@@ -23,6 +23,7 @@
 
 8、集成日志配置
 	8.1 使用默认的基本日志配置（如果使用了 Starters ，那么默认使用 Logback），在application.properties中添加配置:
+	8.2 使用logback的高级日志配置：删除application.properties中的默认配置；增加logback.xml日志配置文件即可。
 
 
 
