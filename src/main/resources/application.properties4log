@@ -1,0 +1,9 @@
+#使用默认的日志配置
+logging.level.root=WARN
+logging.level.org.springframework.web=INFO
+logging.level.org.hibernate=ERROR
+logging.level.com.thg=DEBUG
+#注意这里是斜杠“/”，否则会生成到工程根目录下
+logging.file=E:/logs/bootdemo.log
+logging.pattern.console=%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+logging.pattern.file=%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n

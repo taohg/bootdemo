@@ -17,6 +17,7 @@
     <loggers> 
         <root level="debug">
             <appender-ref ref="RollingFile" />
+            <appender-ref ref="log" />
             <appender-ref ref="Console" />
         </root>
     </loggers>

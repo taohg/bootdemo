@@ -27,5 +27,11 @@
 	8.3 使用log4j的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j依赖；2、删除application.properties中关于日志的配置部分，并重命名logback.xml文件使之失效；3、增加log4j.properties文件（设置日志文件编码集为utf-8后文件日志竟然还是乱码，后来莫名其妙又好了，估计跟application.properties中的日志配置没删除有关系）
 	8.3 使用log4j2的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j2依赖；2、增加log4j2.xml文件（日志文件乱码莫名其妙，但用记事本和sublime打开却不是乱码）
 
-
+9、数据库操作
+	9.1 添加依赖包 mysql、spring data jpa；
+	9.2 增加数据库和jpa的属性配置；
+	9.3 自定义增加jpa的java配置类
+	9.4 增加实体类的jpa映射关系，即java类和数据库表间的对应关系（注意引入的注解类大多都是javax.persistence包下）；
+	9.5 创建持久层Dao，是一个接口类，该接口类继承了JpaRepository。
+	9.6 编写测试用例，通过@Autowired自动装配持久层repository实例，验证数据库的CRUD操作
 
