@@ -25,6 +25,11 @@
 	</properties>
 
 	<dependencies>
+		<!-- 集成redis依赖包 -->
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 	
 		<!-- 集成mysql、spring data jpa依赖包 -->
 		<dependency>

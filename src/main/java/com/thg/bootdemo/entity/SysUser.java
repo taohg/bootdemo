@@ -39,7 +39,11 @@ public class SysUser implements Serializable {
     @Column(nullable = true)
     private String rsrvStr1;
     
-    
+    public SysUser(){
+
+	}
+
+
 	public SysUser(String userName, String passWord, String email, String nickName, String regTime) {
 		super();
 		this.userName = userName;
@@ -90,5 +94,10 @@ public class SysUser implements Serializable {
 	}
 	public void setRsrvStr1(String rsrvStr1) {
 		this.rsrvStr1 = rsrvStr1;
+	}
+
+	@Override
+	public String toString() {
+		return "This item:" +this.getId()+","+ this.getUserName()+","+this.getNickName()+","+this.getPassWord()+","+this.getRegTime();
 	}
 }

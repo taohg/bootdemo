@@ -15,7 +15,7 @@
 	
 6、自定义过滤器：常常在项目中会使用filters用于录调用日志、排除有XSS威胁的字符、执行权限验证等等。Spring Boot自动添加了OrderedCharacterEncodingFilter和HiddenHttpMethodFilter，并且我们可以自定义Filter
 	6.1 自定义过滤器实现Filter接口，实现Filter方法；
-	6.2 添加@Configuration 注解，将自定义Filter加入过滤链
+	6.2 添加@Configuration 注解（示例中新增WebConfiguration.java作为过滤器的处理类），将自定义Filter加入过滤链
 
 7、读取Property配置属性数据
 	7.1 指定属性文件路径：貌似springboot默认的配置文件application.properties无需手工指定路径加载，但自定义属性文件需要通过注解@PropertySource指定；
@@ -25,7 +25,7 @@
 	8.1 使用默认的基本日志配置（如果使用了 Starters ，那么默认使用 Logback），在application.properties中添加配置:
 	8.2 使用logback的高级日志配置：删除application.properties中的默认配置；增加logback.xml日志配置文件即可。
 	8.3 使用log4j的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j依赖；2、删除application.properties中关于日志的配置部分，并重命名logback.xml文件使之失效；3、增加log4j.properties文件（设置日志文件编码集为utf-8后文件日志竟然还是乱码，后来莫名其妙又好了，估计跟application.properties中的日志配置没删除有关系）
-	8.3 使用log4j2的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j2依赖；2、增加log4j2.xml文件（日志文件乱码莫名其妙，但用记事本和sublime打开却不是乱码）
+	8.4 使用log4j2的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j2依赖；2、增加log4j2.xml文件（日志文件乱码莫名其妙，但用记事本和sublime打开却不是乱码）
 
 9、数据库操作
 	9.1 添加依赖包 mysql、spring data jpa；
@@ -34,4 +34,10 @@
 	9.4 增加实体类的jpa映射关系，即java类和数据库表间的对应关系（注意引入的注解类大多都是javax.persistence包下）；
 	9.5 创建持久层Dao，是一个接口类，该接口类继承了JpaRepository。
 	9.6 编写测试用例，通过@Autowired自动装配持久层repository实例，验证数据库的CRUD操作
+
+
+10、集成redis
+	10.1 引入 spring-boot-starter-data-redis依赖包（使用spring-boot-starter-redis依赖包没成功）；
+	10.2 配置文件 application.properties 中添加redis的相关属性配置；
+	10.3 在自定义类中通过@Autowired自动装配注解获取redis操作实例，可直接进行redis的相关操作
 
