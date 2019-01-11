@@ -17,9 +17,10 @@
 	6.1 自定义过滤器实现Filter接口，实现Filter方法；
 	6.2 添加@Configuration 注解，将自定义Filter加入过滤链
 
-7、读取Property配置属性数据
+7、读取Property配置属性数据（浏览器中输入http://localhost:8080/demo/getProperties调用接口验证）
 	7.1 指定属性文件路径：貌似springboot默认的配置文件application.properties无需手工指定路径加载，但自定义属性文件需要通过注解@PropertySource指定；
 	7.2 属性数据可以直接通过@Value注解获取；也可以通过java bean读取所有属性数据(注解@Component不能少，否则启动会报错；get/set方法不可少)，然后在需要引用的类中通过@Autowired自动装配
+	    但存在乱码问题，IDEA中设置文件编码格式为utf-8且“Transparent native-to-ascii conversion”，貌似会自动将中文转换成unicode码
 
 8、集成日志配置
 	8.1 使用默认的基本日志配置（如果使用了 Starters ，那么默认使用 Logback），在application.properties中添加配置:
