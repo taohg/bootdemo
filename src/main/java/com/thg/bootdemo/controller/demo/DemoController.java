@@ -14,7 +14,7 @@ import com.thg.bootdemo.web.config.PrefixProperties;
 
 @RestController
 @RequestMapping(value="/demo")
-@PropertySource("classpath:me.properties")
+@PropertySource(value="classpath:me.properties", encoding="UTF-8")    //自定义属性乱码要通过encoding设置编码格式，感谢楼主分享 https://www.cnblogs.com/tulpen/p/9803116.html
 public class DemoController {
 	private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
 	
@@ -28,7 +28,7 @@ public class DemoController {
 		return "Hello, " + userName + "..";
 	}
 	
-	//----------begin  直接读取配置文件属性值
+	//----------begin  通过@Value注解获取配置文件属性值
 	@Value("${com.neo.title}")
 	private String title;
 	
@@ -40,18 +40,19 @@ public class DemoController {
 	
 	@RequestMapping(value="/getProperties", method=RequestMethod.GET)
 	public String getProperties() {
-		String res = "我是通过注解@Value获取的属性值----com.neo.title："+title+"\n";
-		res = res + "-----com.neo.description："+description+"\n";
-		res = res + "----me.key1:"+key+"\n";
+		String res = "我是通过注解@Value获取的属性值";
+		res = res + "-----com.neo.title："+title+"|||||||||";
+		res = res + "-----com.neo.description："+description+"|||||||||";
+		res = res + "-----me.key:"+key+"|||||||||";
 //		System.out.println(res);
-		logger.error("***1****:"+res);
+		logger.error("-----------log.error-----:"+res);
+		logger.error("-----------log.error-----prefixBean.getPrefixConfigInfo():"+prefixBean.getPrefixConfigInfo());
 //		System.out.println(ps.getConfigInfo());
 		logger.debug("===debug==="+ps.getConfigInfo());
 		logger.debug("{}", "===debug==="+ps.getConfigInfo());
 		logger.info("===info==="+ps.getConfigInfo());
 		logger.warn("===warn==="+ps.getConfigInfo());
-		logger.info("-----------log.info-----prefixBean.getPrefixConfigInfo():"+prefixBean.getPrefixConfigInfo());
 		return res;
 	}
-	//----------end  直接读取配置文件属性值
+	//----------end  通过@Value注解获取配置文件属性值
 }

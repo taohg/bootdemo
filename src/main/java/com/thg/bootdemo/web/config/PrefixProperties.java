@@ -11,7 +11,8 @@ public class PrefixProperties {
 	private String pname;
 	private String password;
 	private String key;
-	
+	private String encodetag;
+
 	public String getPname() {
 		return pname;
 	}
@@ -46,9 +47,15 @@ public class PrefixProperties {
 		this.key = key;
 	}
 
+	public String getEncodetag() {
+		return encodetag;
+	}
 
+	public void setEncodetag(String encodetag) {
+		this.encodetag = encodetag;
+	}
 
 	public String getPrefixConfigInfo() {
-		return "我是用prefix方式java bean方式读取的配置:"+pname + "---" + password+"-----"+key;
+		return "我是用prefix方式java bean方式读取的配置:"+pname + "---" + password+"-----"+key + "-----" + encodetag;
 	}
 }
