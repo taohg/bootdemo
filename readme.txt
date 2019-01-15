@@ -36,3 +36,10 @@
 	9.5 创建持久层Dao，是一个接口类，该接口类继承了JpaRepository。
 	9.6 编写测试用例，通过@Autowired自动装配持久层repository实例，验证数据库的CRUD操作
 
+10、集成redis
+    10.1 添加依赖包 spring-boot-starter-data-redis、jedis；
+    10.2 增加redis配置属性文件 redis.properties；
+    10.3 封装 RedisTemplate 的 RedisUtil 缓存操作工具类（遇到【非法字符：“\ufeff”】异常时，可参考https://blog.csdn.net/shenshizhong/article/details/52725069）；
+    10.4 封装 redis 单机版配置类 RedisConfig，参考 【https://blog.csdn.net/plei_yue/article/details/79362372】配置集群模式和哨兵模式
+    10.5 在DemoController中增加接口方法testRedis，通过接口测试工具postman输入地址http://localhost:8080/demo/testredis验证接口
+

@@ -25,7 +25,18 @@
 	</properties>
 
 	<dependencies>
-	
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		
 		<!-- 集成mysql、spring data jpa依赖包 -->
 		<dependency>
 	        <groupId>org.springframework.boot</groupId>

@@ -5,12 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thg.bootdemo.util.RedisUtil;
 import com.thg.bootdemo.web.config.BootProperties;
 import com.thg.bootdemo.web.config.PrefixProperties;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/demo")
@@ -22,7 +26,11 @@ public class DemoController {
 	BootProperties ps;  //代码中直接通过  bean 给属性初始化值
 	@Autowired
 	PrefixProperties prefixBean;  //通过配置文件，指定前缀初始化值
-	
+
+	@Autowired
+	private RedisUtil redisUtil;
+
+
 	@RequestMapping(value="/getname", method=RequestMethod.GET)
 	public String getName(String userName) {
 		return "Hello, " + userName + "..";
@@ -55,4 +63,21 @@ public class DemoController {
 		return res;
 	}
 	//----------end  通过@Value注解获取配置文件属性值
+
+
+	@RequestMapping(value="/testredis", method=RequestMethod.POST)
+	public String testRedis(@RequestBody Map param){
+		String resultStr = null;
+
+		for (Object o : param.keySet()){
+			String key = (String)o;
+			logger.debug("--------key:"+ key + "----value:" + param.get(key));
+			redisUtil.set(key, param.get(key));
+			logger.debug("--------key:"+ key + "----redisUtil.get:" + redisUtil.get(key));
+		}
+
+		resultStr = "true";
+		return resultStr;
+	}
+
 }
