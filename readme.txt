@@ -39,7 +39,15 @@
 10、集成redis
     10.1 添加依赖包 spring-boot-starter-data-redis、jedis；
     10.2 增加redis配置属性文件 redis.properties；
-    10.3 封装 RedisTemplate 的 RedisUtil 缓存操作工具类（遇到【非法字符：“\ufeff”】异常时，可参考https://blog.csdn.net/shenshizhong/article/details/52725069）；
+    10.3 封装 RedisTemplate 的 RedisUtil 缓存操作工具类（遇到【非法字符：“\ufeff”】异常时，把redis升级到2.8以上版本即可，可参考https://blog.csdn.net/shenshizhong/article/details/52725069）；
     10.4 封装 redis 单机版配置类 RedisConfig，参考 【https://blog.csdn.net/plei_yue/article/details/79362372】配置集群模式和哨兵模式
     10.5 在DemoController中增加接口方法testRedis，通过接口测试工具postman输入地址http://localhost:8080/demo/testredis验证接口
+
+11、集成spring session共享
+    11.1 添加依赖包 spring-session-data-redis；
+    11.2 增加自定义 SessionConfig 类，并通过注解 @EnableRedisHttpSession 开启 spring session 支持，maxInactiveIntervalInSeconds设置session失效时间单位是秒；
+    11.3 application.properties中增加redis配置
+    11.4 在 DemoController 中增加接口方法 uid，通过浏览器输入地址http://localhost:8080/demo/uid验证接口
+    11.5 运行两套工程代码，在application.properties中设置内置tomcat的端口分别为8080和8090，在同一浏览器中通过不同端口分别访问 http://localhost:8080/demo/uuid 接口
+
 

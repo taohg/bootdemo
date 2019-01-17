@@ -14,7 +14,11 @@ import com.thg.bootdemo.util.RedisUtil;
 import com.thg.bootdemo.web.config.BootProperties;
 import com.thg.bootdemo.web.config.PrefixProperties;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value="/demo")
@@ -78,6 +82,36 @@ public class DemoController {
 
 		resultStr = "true";
 		return resultStr;
+	}
+
+
+	@RequestMapping("/uid")
+	public String uid(HttpSession session) {
+		UUID uid = (UUID) session.getAttribute("uid");
+		if (uid == null) {
+			uid = UUID.randomUUID();
+		}
+		session.setAttribute("uid", uid);
+		return session.getId();
+	}
+
+	@RequestMapping("/uuid")
+	public Map uuid(HttpServletRequest request) {
+		Map resMap = new HashMap();
+		HttpSession session = request.getSession();
+		String sessionID = session.getId();
+		String requestUrl = request.getRequestURL().toString();
+		logger.debug("--------sessionID:" + sessionID);
+
+		UUID uid = (UUID) session.getAttribute("uid");
+		if (uid == null) {
+			uid = UUID.randomUUID();
+		}
+		session.setAttribute("uid", uid);
+		resMap.put("sessionID", sessionID);
+		resMap.put("uid", uid);
+		resMap.put("requestUrl", requestUrl);
+		return resMap;
 	}
 
 }
