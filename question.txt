@@ -1,0 +1,2 @@
+1、启动工程时，报错enableRedisKeyspaceNotificationsInitializer？
+    用 2.6.12版本的redis时报这个错，换了个3.0.503版本的解决了该问题，貌似spring-session中间件需要依赖redis2.8.0以上版本

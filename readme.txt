@@ -1,4 +1,6 @@
-1、访问http://start.spring.io/，用来生成基础工程
+1、【构建项目】
+	1、[Maven 构建项目]：访问http://start.spring.io/，用来生成基础工程；选择构建工具 Maven Project、Java、Spring Boot 版本 2.1.3 以及一些工程基本信息；点击 Generate Project 下载项目压缩包；解压后，使用 Idea 导入项目，File -> New -> Model from Existing Source.. -> 选择解压后的文件夹 -> OK，选择 Maven 一路 Next，OK done!；如果使用的是 Eclipse，Import -> Existing Maven Projects -> Next -> 选择解压后的文件夹 -> Finsh，OK done!
+	2、[IDea构建项目]：选择 File -> New —> Project... 弹出新建项目的框；选择 Spring Initializr，Next 也会出现上述类似的配置界面，Idea 帮我们做了集成；填写相关内容后，点击 Next 选择依赖的包再点击 Next，最后确定信息无误点击 Finish。
 
 2、选择构建工具Maven Project、Spring Boot版本1.3.6以及一些工程基本信息，点击生成并下载工程压缩包
 
