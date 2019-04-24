@@ -18,7 +18,7 @@ import com.thg.bootdemo.web.config.PrefixProperties;
 
 import java.util.Map;
 
-@RestController
+@RestController   //@RestController的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了！
 @RequestMapping(value="/demo")
 @PropertySource("classpath:me.properties")
 public class DemoController {
@@ -49,7 +49,13 @@ public class DemoController {
 	
 	@Value("${me.key1}")
 	private String key1;
-	
+
+
+	@RequestMapping("/hello")
+	public String methodHelloWorld(){
+		return "Hello World";
+	}
+
 	@RequestMapping(value="/getProperties", method=RequestMethod.GET)
 	public String getProperties() {
 		String res = "我是通过注解@Value获取的属性值----com.neo.title："+title;

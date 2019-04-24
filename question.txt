@@ -1,2 +1,7 @@
 1、启动工程时，报错enableRedisKeyspaceNotificationsInitializer？
-    用 2.6.12版本的redis时报这个错，换了个3.0.503版本的解决了该问题，貌似spring-session中间件需要依赖redis2.8.0以上版本
+  答：用 2.6.12版本的redis时报这个错，换了个3.0.503版本的解决了该问题，貌似spring-session中间件需要依赖redis2.8.0以上版本
+
+2、使用mockmvc进行单元测试报错：java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
+  答：是由于刚开始类 DemoControllerTests 的放置路径有问题，必须和spring boot工程的启动类包路径相同。
+
+
