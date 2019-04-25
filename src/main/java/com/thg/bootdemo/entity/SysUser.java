@@ -1,6 +1,7 @@
 package com.thg.bootdemo.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,19 +39,24 @@ public class SysUser implements Serializable {
     private String regTime;
     @Column(nullable = true)
     private String rsrvStr1;
+    @Column(nullable=true)
+    private String rsrvStr2Test;
+    @Column(nullable = true)
+    private Date rsrvDate;
     
     public SysUser(){
 
 	}
 
 
-	public SysUser(String userName, String passWord, String email, String nickName, String regTime) {
+	public SysUser(String userName, String passWord, String email, String nickName, String regTime, Date rsrvDate) {
 		super();
 		this.userName = userName;
 		this.passWord = passWord;
 		this.email = email;
 		this.nickName = nickName;
 		this.regTime = regTime;
+		this.rsrvDate = rsrvDate;
 	}
 	
 	public Long getId() {

@@ -33,14 +33,14 @@ public class BootdemoApplicationTests {
 	@Test
 	public void contextLoads() {
 		Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss");        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String formattedDate = dateFormat.format(date);
         
         String tmp = String.valueOf(System.currentTimeMillis());
 //        sysUserRepository.save(new SysUser("aa1", "aa123456", "aa@126.com", "aa", formattedDate));
-        sysUserRepository.save(new SysUser("aa1_"+tmp, "aa123456", tmp+"aa@126.com", "aa"+tmp, formattedDate));
-        sysUserRepository.save(new SysUser("bb2_"+tmp, "bb123456", tmp+"bb@126.com", "bb"+tmp, formattedDate));
-        sysUserRepository.save(new SysUser("cc3_"+tmp, "cc123456", tmp+"cc@126.com", "cc"+tmp, formattedDate));
+        sysUserRepository.save(new SysUser("aa1_"+tmp, "aa123456", tmp+"aa@126.com", "aa"+tmp, formattedDate, date));
+        sysUserRepository.save(new SysUser("bb2_"+tmp, "bb123456", tmp+"bb@126.com", "bb"+tmp, formattedDate, date));
+        sysUserRepository.save(new SysUser("cc3_"+tmp, "cc123456", tmp+"cc@126.com", "cc"+tmp, formattedDate, date));
 
 //        Assert.assertEquals(9, sysUserRepository.findAll().size());
 //        Assert.assertEquals("bb", sysUserRepository.findByUserNameOrEmail("bb", "cc@126.com").getNickName());
