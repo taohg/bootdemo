@@ -28,7 +28,7 @@ public class BootProperties {
 	}
 	
 	public String getConfigInfo() {
-		return "我是java bean方式读取的配置:"+title + "---" + description;
+		return "我是java bean方式读取的配置:\\r\\n ---com.neo.title:"+title + "\\r\\n---com.neo.description:" + description;
 	}
 	
 }

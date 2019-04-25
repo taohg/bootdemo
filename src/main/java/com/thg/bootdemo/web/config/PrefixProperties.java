@@ -49,6 +49,6 @@ public class PrefixProperties {
 
 
 	public String getPrefixConfigInfo() {
-		return "我是用prefix方式java bean方式读取的配置:"+pname + "---" + password+"-----"+key;
+		return "我是用prefix方式java bean方式读取的配置:\\r\\n ---me.pname:"+pname + "\\r\\n---me.password:" + password+"\\r\\n---me.key:"+key;
 	}
 }

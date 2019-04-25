@@ -66,18 +66,19 @@ public class DemoController {
 	}
 	@RequestMapping(value="/getProperties", method=RequestMethod.GET)
 	public String getProperties() {
-		String res = "我是通过注解@Value获取的属性值----com.neo.title："+title;
-		res = res + "-----com.neo.description："+description;
-		res = res + "----me.key1:"+key1;
+		String res = "我是通过注解@Value获取的属性值:\\r";
+		res = res + "----默认--com.neo.title："+title + "\\r\\n";
+		res = res + "----默认--com.neo.description："+description + "\\r\\n";
+		res = res + "----自定义--me.key1:"+key1 + "\\r\\n";
 		System.out.println(res);
 		logger.error("***1****"+res);
 //		System.out.println(ps.getConfigInfo());
 		logger.debug("===debug==="+ps.getConfigInfo());
 		logger.debug("{}", "===debug==="+ps.getConfigInfo());
 		logger.info("===info==="+ps.getConfigInfo());
-		logger.warn("===warn==="+ps.getConfigInfo());
-		System.out.println(prefixBean.getPrefixConfigInfo());
-		return res;
+		String res2 = ps.getConfigInfo();
+		String res3 = prefixBean.getPrefixConfigInfo();
+		return res + "***" + res2 + "***" + res3;
 	}
 	//----------end  直接读取配置文件属性值
 
