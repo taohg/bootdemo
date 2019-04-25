@@ -24,7 +24,7 @@
 	7.1 指定属性文件路径：貌似springboot默认的配置文件application.properties无需手工指定路径加载，但自定义属性文件需要通过注解@PropertySource指定；
 	7.2 属性数据可以直接通过@Value注解获取；也可以通过java bean读取所有属性数据(注解@Component不能少，否则启动会报错；get/set方法不可少)，然后在需要引用的类中通过@Autowired自动装配
 
-8、集成日志配置
+8、集成日志配置（查看pom.xml的日志依赖判断当前用的什么日志框架）
 	8.1 使用默认的基本日志配置（如果使用了 Starters ，那么默认使用 Logback），在application.properties中添加配置:
 	8.2 使用logback的高级日志配置：删除application.properties中的默认配置；增加logback.xml日志配置文件即可。
 	8.3 使用log4j的高级日志配置：1、排除springboot默认的logback日志框架，引入springboot的log4j依赖；2、删除application.properties中关于日志的配置部分，并重命名logback.xml文件使之失效；3、增加log4j.properties文件（设置日志文件编码集为utf-8后文件日志竟然还是乱码，后来莫名其妙又好了，估计跟application.properties中的日志配置没删除有关系）

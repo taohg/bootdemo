@@ -75,7 +75,9 @@ public class DemoController {
 //		System.out.println(ps.getConfigInfo());
 		logger.debug("===debug==="+ps.getConfigInfo());
 		logger.debug("{}", "===debug==="+ps.getConfigInfo());
-		logger.info("===info==="+ps.getConfigInfo());
+		if(logger.isInfoEnabled()) {
+            logger.info("===我是info，把我打印了没，info===" + ps.getConfigInfo());
+        }
 		String res2 = ps.getConfigInfo();
 		String res3 = prefixBean.getPrefixConfigInfo();
 		return res + "***" + res2 + "***" + res3;
