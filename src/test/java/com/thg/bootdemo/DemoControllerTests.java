@@ -31,4 +31,12 @@ public class DemoControllerTests {
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
     }
+
+    @Test
+    public void getBean() throws Exception{
+        mvc.perform(MockMvcRequestBuilders.get("/demo/getBean").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 }

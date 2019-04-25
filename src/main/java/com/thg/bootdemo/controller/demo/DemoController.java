@@ -56,6 +56,14 @@ public class DemoController {
 		return "Hello World";
 	}
 
+	@RequestMapping("/getBean")
+	public SysUser getJavaBean(){
+		SysUser user = new SysUser();
+		user.setId(1L);
+		user.setNickName("testName");
+		user.setEmail("123@163.com");
+		return user;
+	}
 	@RequestMapping(value="/getProperties", method=RequestMethod.GET)
 	public String getProperties() {
 		String res = "我是通过注解@Value获取的属性值----com.neo.title："+title;
