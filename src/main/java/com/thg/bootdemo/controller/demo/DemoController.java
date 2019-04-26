@@ -1,7 +1,8 @@
 package com.thg.bootdemo.controller.demo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.thg.bootdemo.common.CommonUtil;
-import com.thg.bootdemo.common.RedisConfig;
+import com.thg.bootdemo.common.DateUtil;
 import com.thg.bootdemo.entity.SysUser;
 import com.thg.bootdemo.exception.GeneralException;
 import com.thg.bootdemo.service.impl.SysUserServiceImpl;
@@ -9,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,6 +87,14 @@ public class DemoController {
 	}
 	//----------end  直接读取配置文件属性值
 
+	@Cacheable(value="user-key") //根据方法生成缓存貌似没有实际意义，每次调用该rest接口都不执行方法体
+	@RequestMapping("/getSysUser")
+	public SysUser getSysUser() {
+		SysUser sysuser = new SysUser();
+		sysuser.setUserName("name" + DateUtil.getSysString());
+        logger.info("user-key:::::" + JSONObject.toJSONString(sysuser));
+		return sysuser;
+	}
 
 	@RequestMapping(value="/getRedisData", method=RequestMethod.POST)
 	public String getData(@RequestBody Map inParam){
