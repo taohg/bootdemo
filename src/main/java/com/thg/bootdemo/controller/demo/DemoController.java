@@ -10,7 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import com.thg.bootdemo.web.config.BootProperties;
@@ -30,7 +32,7 @@ public class DemoController {
 	PrefixProperties prefixBean;
 
 	@Autowired
-	RedisConfig redisConfig;
+    RedisTemplate redisTemplate;
 
 	@Autowired
 	SysUserServiceImpl sysUserService;     //要自动装配成功，必须先进行 bean 定义
@@ -88,14 +90,15 @@ public class DemoController {
 	@RequestMapping(value="/getRedisData", method=RequestMethod.POST)
 	public String getData(@RequestBody Map inParam){
 		String res = null;
+		ValueOperations operations = redisTemplate.opsForValue();
 		String key = CommonUtil.getString(inParam, "userName");
 		String value = CommonUtil.getString(inParam, "email")+System.currentTimeMillis();
 		SysUser sysUser = null;
 //		stringRedisTemplate.opsForValue().set(key, value);
 //		String res = stringRedisTemplate.opsForValue().get(key);
 		try {
-			redisConfig.setString(key, value);
-			res = redisConfig.getString(key);
+			operations.set(key, value);
+			res = (String)operations.get(key);
 
 			sysUser = sysUserService.getSysUserByName(key);
 		} catch (GeneralException e) {
