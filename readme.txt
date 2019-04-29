@@ -44,3 +44,16 @@
 	10.2 配置文件 application.properties 中添加redis的相关属性配置；
 	10.3 在自定义类中通过@Autowired自动装配注解获取redis操作实例，可直接进行redis的相关操作
 
+11、集成Spring Session （Spring Session 提供了集群 Session（Clustered Sessions）功能，默认采用外置的 Redis 来存储 Session 数据，以此来解决 Session 共享的问题）
+    11.1 引入依赖包 spring-session-data-redis；
+    11.2 增加SessionConfig类通过注解configuration配置session（maxInactiveIntervalInSeconds: 设置 Session 失效时间，使用 Redis Session 之后，原 Spring Boot 的 server.session.timeout 属性不再生效）
+    11.3 前台通过HttpSession发起web请求时后台服务器就会创建session会话；
+    11.4 分布式验证：
+        1）将工程bootdemo复制为另一个工程，示例中将工程目录、.project文件，以及pom.xml文件中的name和artifactId标签都改为bootdemo2；
+        2）application.properties文件中增加server.port=8082属性修改内嵌的web应用服务器监听端口（第一次改为8081的时候提示该端口被占用，通过命令发现是WiFiMaster进程占用了）；
+        3）在同一浏览器输入http://localhost:8080/demo/uid和http://localhost:8082/demo/uid返回相同的 uid；在不同的浏览器返回的是不同的 uid
+
+
+
+
+

@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import com.thg.bootdemo.web.config.BootProperties;
 import com.thg.bootdemo.web.config.PrefixProperties;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController   //@RestController的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了！
 @RequestMapping(value="/demo")
@@ -116,5 +118,15 @@ public class DemoController {
 		}
 		logger.debug("++++++++++++++"+res+"----------sysUser:"+sysUser);
 		return res;
+	}
+
+	@RequestMapping("/uid")
+	public String uid(HttpSession session){
+		UUID uid = (UUID) session.getAttribute("uid");
+		if(uid == null){
+			uid = UUID.randomUUID();
+		}
+		session.setAttribute("uid", uid);
+		return session.getId();
 	}
 }

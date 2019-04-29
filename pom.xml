@@ -41,6 +41,11 @@
 		</dependency>
 
 
+		<!--  共享session  -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
 
 		<!-- 集成redis依赖包 -->
 		<dependency>  
