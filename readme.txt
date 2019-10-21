@@ -3,12 +3,12 @@
 	2、[IDea构建项目]：选择 File -> New —> Project... 弹出新建项目的框；选择 Spring Initializr，Next 也会出现上述类似的配置界面，Idea 帮我们做了集成；填写相关内容后，点击 Next 选择依赖的包再点击 Next，最后确定信息无误点击 Finish。
 
 2、【单元测试】
-    1、创建单元测试类 DemoControllerTests （类的目录一定要和工程启动类的包路径相同，即src/test/java/com/thg/bootdemo，不能直接放到java下）
+    1、创建单元测试类 DemoControllerTests实现测试方法后直接运行单元测试方法，无需通过Application启动应用 （类的目录一定要和工程启动类的包路径相同，即src/test/java/com/thg/bootdemo，不能直接放到java下），单元测试启动时报Class not found异常，clean操作工程后正常。
 
 3、使用eclipse，Import -> Existing Maven Projects -> Next ->选择解压后的文件夹-> Finsh，导入工程
 
 4、引入web模块：
-	4.1 添加web模块依赖包；
+	4.1 添加web模块依赖包spring-boot-starter-web；
 	4.2 编写controller内容：@RestController的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了
 	4.3 启动主程序，打开浏览器访问controller中服务的url，如http://localhost:8080/hello
 	
@@ -32,8 +32,8 @@
 
 9、数据库操作（参数hibernate.hbm2ddl.auto=update没有成功修改表结构）
 	9.1 添加依赖包 mysql、spring data jpa；
-	9.2 增加数据库和jpa的属性配置；
-	9.3 自定义增加jpa的java配置类
+	9.2 资源文件 application.properties 增加数据库和jpa的属性配置；
+	9.3 自定义增加jpa的java配置类JpaConfiguration
 	9.4 增加实体类的jpa映射关系，即java类和数据库表间的对应关系（注意引入的注解类大多都是javax.persistence包下）；
 	9.5 创建持久层Dao，是一个接口类，该接口类继承了JpaRepository。
 	9.6 编写测试用例，通过@Autowired自动装配持久层repository实例，验证数据库的CRUD操作
@@ -41,7 +41,7 @@
 
 10、集成redis
 	10.1 引入 spring-boot-starter-data-redis依赖包（使用spring-boot-starter-redis依赖包没成功）；
-	10.2 配置文件 application.properties 中添加redis的相关属性配置；
+	10.2 配置文件 application.properties 中添加redis的相关属性配置（redis-server版本用2.6.12启动不了，换了3.0.503后可以正常启动）；
 	10.3 在自定义类中通过@Autowired自动装配注解获取redis操作实例，可直接进行redis的相关操作
 
 11、集成Spring Session （Spring Session 提供了集群 Session（Clustered Sessions）功能，默认采用外置的 Redis 来存储 Session 数据，以此来解决 Session 共享的问题）
@@ -53,6 +53,7 @@
         2）application.properties文件中增加server.port=8082属性修改内嵌的web应用服务器监听端口（第一次改为8081的时候提示该端口被占用，通过命令发现是WiFiMaster进程占用了）；
         3）在同一浏览器输入http://localhost:8080/demo/uid和http://localhost:8082/demo/uid返回相同的 uid；在不同的浏览器返回的是不同的 uid
 
+12、Spring boot Jpa（Java Persistence API）持久化规范：https://www.cnblogs.com/ityouknow/p/5891443.html
 
 
 
